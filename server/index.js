@@ -18,18 +18,20 @@ app.post("/api/chat", async (req, res) => {
 
   try {
     const response = await axios.post(
-      "https://openrouter.ai/api/v1/chat/completions",
-      {
-        model: "openrouter/cypher-alpha:free",
-        messages: [{ role: "user", content: userMessage }],
+    "https://openrouter.ai/api/v1/chat/completions",
+    {
+      model: "mistralai/mistral-7b-instruct:free",
+      messages: [{ role: "user", content: userMessage }],
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://your-frontend-url.com", // Optional
       },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-        },
-      }
-    );
+    }
+  );
+
 
     res.json({ reply: response.data.choices[0].message.content });
   } catch (error) {
