@@ -25,7 +25,7 @@ app.post("/api/chat", async (req, res) => {
     },
     {
       headers: {
-        Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
         "Content-Type": "application/json",
         "HTTP-Referer": "https://your-frontend-url.com", // Optional
       },
