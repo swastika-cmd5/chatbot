@@ -21,7 +21,7 @@ app.post("/api/chat", async (req, res) => {
     "https://openrouter.ai/api/v1/chat/completions",
     {
       model: "mistralai/mistral-7b-instruct:free",
-      messages: [{ role: "user", content: userMessage }],
+      messages: [{ role: "system", content: "You are a helpful assistant. Always respond in English." },{ role: "user", content: userMessage }],
     },
     {
       headers: {
